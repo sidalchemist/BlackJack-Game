@@ -16,11 +16,6 @@ class Card:
     def __str__(self):
         return self.rank + ' of ' + self.suit
 
-# suits[0]
-# ranks[0]
-# two_hearts = Card(suits[0],ranks[0])
-# print(two_hearts)
-
 class Deck:
     
     def __init__(self):
@@ -28,25 +23,13 @@ class Deck:
         for suit in suits:
             for rank in ranks:
                 self.deck.append(Card(suit,rank))
-    
-    # def __str__(self):
-    #     return str(self.deck)
+  
 
     def shuffle(self):
         random.shuffle(self.deck)
         
     def deal(self):
         return self.deck.pop()
-
-# mydeck = Deck()
-# print(len(mydeck.deck))
-# print(mydeck)
-
-
-
-# print(mydeck.deck[0])
-# mydeck.shuffle()
-# print(mydeck.deck[0])
 
 class Hand:
     def __init__(self):
@@ -67,14 +50,6 @@ class Hand:
             self.aces-=1
         
 
-test=Deck()
-test.shuffle()
-player = Hand()
-card = test.deal()
-print(card)
-player.add_card(card)
-print(player.value)
-
 class Chips:
     
     def __init__(self,total=100):
@@ -90,7 +65,7 @@ class Chips:
 def take_bet(chips):
     while True:
         try:
-            chips.bet = int(input("How many chips would you likr to bet??"))
+            chips.bet = int(input("How many chips would you like to bet?"))
         except:
             print("Sorry please provide an integer")
         else:
@@ -123,6 +98,7 @@ def hit_or_stand(deck,hand):
         break
 
 def show_some(player,dealer):
+    print("\n")
     print("DEALER HAND: ")
     print("one card hidden")
     print(dealer.cards[1])
@@ -132,6 +108,7 @@ def show_some(player,dealer):
         print(card)
 
 def show_all(player,dealer):
+    print("\n")
     print("DEALERS HAND")
     for card in dealer.cards:
         print(card)
@@ -172,7 +149,7 @@ while True:
     dealer_hand.add_card(deck.deal())
     dealer_hand.add_card(deck.deal())
 
-
+    print("\n")
     palyer_chips = Chips()
 
     take_bet(palyer_chips)
@@ -213,6 +190,6 @@ while True:
         playing=True
         continue
     else:
-        print("Thankyou or banking!")
+        print("Thankyou for playing!")
         break
 
